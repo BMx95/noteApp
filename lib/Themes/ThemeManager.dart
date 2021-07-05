@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:localstore/localstore.dart';
+import 'package:notes_app/Controllers/NotesControllers.dart';
 
 CustomTheme currentTheme = CustomTheme();
 
@@ -7,7 +9,9 @@ class CustomTheme with ChangeNotifier {
 
   static ThemeMode get currentTheme =>
       _isDark ? ThemeMode.dark : ThemeMode.light;
+
   static var dark = ThemeData.dark();
+
   void toggleTheme() {
     _isDark = !_isDark;
     notifyListeners();
@@ -21,7 +25,7 @@ class CustomTheme with ChangeNotifier {
         color: Colors.blueGrey,
         centerTitle: true,
         textTheme: TextTheme(
-          title: TextStyle(
+          headline6: TextStyle(
             fontSize: 35,
             color: Colors.white,
           ),
@@ -29,7 +33,7 @@ class CustomTheme with ChangeNotifier {
       ),
       dialogBackgroundColor: Colors.brown,
       textTheme: TextTheme(
-        body1: TextStyle(color: Colors.white),
+        bodyText2: TextStyle(color: Colors.white),
       ),
     );
   }
@@ -42,7 +46,7 @@ class CustomTheme with ChangeNotifier {
         color: Colors.blueGrey,
         centerTitle: true,
         textTheme: TextTheme(
-          title: TextStyle(
+          headline6: TextStyle(
             fontSize: 35,
             color: Colors.white,
           ),

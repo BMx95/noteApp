@@ -1,27 +1,26 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:notes_app/Screens/MainScreen.dart';
-import 'package:notes_app/Themes/MainTheme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:notes_app/Controllers/NotesControllers.dart';
+import 'package:notes_app/Screens/MainScreen/MainScreen.dart';
+import 'package:notes_app/Themes/ThemeManager.dart';
+import 'package:get/get.dart';
 
-String key = 'count';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences preferences = await SharedPreferences.getInstance();
-
+  await NoteCtrl.getNotes();
+  /*var localNotes = await NoteCtrl.db.get();
+  notes = localNotes!.values.toList();*/
   runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
+
 }
 
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-    // TODO: implement initState
     currentTheme.addListener(() {
       setState(() {});
     });
@@ -30,7 +29,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       home: MainScreen(),
       theme: CustomTheme.mainTheme,
       darkTheme: CustomTheme.darkTheme,

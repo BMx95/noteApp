@@ -1,12 +1,15 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:notes_app/Screens/EditNote/EditNoteDialog.dart';
 
 class NoteCard extends StatelessWidget {
   NoteCard(
-      {Key? key, required this.date, required this.text, required this.title})
+      {Key? key,
+      required this.date,
+      required this.text,
+      required this.title,
+      required this.id})
       : super(key: key);
-  String title, date, text;
+  final String title, date, text, id;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,14 +22,10 @@ class NoteCard extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (buidler) {
-                  return SimpleDialog(
-                    title: Text(title),
-                    children: [
-                      Text(date),
-                      TextFormField(
-                        initialValue: text,
-                      ),
-                    ],
+                  return EditNoteDialog(
+                    title: this.title,
+                    text: this.text,
+                    id: id,
                   );
                 });
           },
