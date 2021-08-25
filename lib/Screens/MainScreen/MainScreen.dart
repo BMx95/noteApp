@@ -29,13 +29,13 @@ class _MainScreenState extends State<MainScreen> {
               ),
             )
           : GridView.count(
-              crossAxisCount: 2,
+              crossAxisCount: 4,
               children: notes.map((note) {
                 return NoteCard(
                   date: note['Date'].toString(),
                   text: note['Text'].toString(),
                   title: note['Title'].toString(),
-                  id:note['id'],
+                  id: note['id'],
                 );
               }).toList(),
             ),

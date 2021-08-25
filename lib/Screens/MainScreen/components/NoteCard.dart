@@ -12,6 +12,8 @@ class NoteCard extends StatelessWidget {
   final String title, date, text, id;
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(

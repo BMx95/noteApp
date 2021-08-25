@@ -18,19 +18,36 @@ class _AppBarWidgetState extends State<AppBarWidget>
     return AppBar(
       title: Text('Notes'),
       actions: [
-        IconButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (builder) {
-                  return AddNoteDialog();
-                },
-                barrierDismissible: true,
-                useSafeArea: true,
-                //barrierColor: Colors.transparent,
-              );
-            },
-            icon: Icon(Icons.add))
+        GestureDetector(
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (builder) {
+                return AddNoteDialog();
+              },
+              barrierDismissible: true,
+              useSafeArea: true,
+            );
+          },
+          child: Row(
+            children: [
+              Text("Add Note"),
+              Icon(Icons.add)
+              /* IconButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (builder) {
+                        return AddNoteDialog();
+                      },
+                      barrierDismissible: true,
+                      useSafeArea: true,
+                    );
+                  },
+                  icon: Icon(Icons.add)),*/
+            ],
+          ),
+        )
       ],
     );
   }

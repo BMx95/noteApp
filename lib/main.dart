@@ -15,7 +15,6 @@ void main() async {
 class MyApp extends StatefulWidget {
   @override
   _MyAppState createState() => _MyAppState();
-
 }
 
 class _MyAppState extends State<MyApp> {
@@ -34,6 +33,7 @@ class _MyAppState extends State<MyApp> {
       theme: CustomTheme.mainTheme,
       darkTheme: CustomTheme.darkTheme,
       themeMode: CustomTheme.currentTheme,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
