@@ -3,7 +3,7 @@ import 'package:notes_app/Screens/MainScreen/components/AppBar.dart';
 import 'package:notes_app/Screens/MainScreen/components/NoteCard.dart';
 import 'package:notes_app/Screens/Drawer/drawer.dart';
 
-import '../../notes.dart';
+import '../../globals.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             )
           : GridView.count(
-              crossAxisCount: 4,
+              crossAxisCount: 2,
               children: notes.map((note) {
                 return NoteCard(
                   date: note['Date'].toString(),

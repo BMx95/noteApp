@@ -1,8 +1,19 @@
 import 'package:localstore/localstore.dart';
-import 'package:notes_app/notes.dart';
+import 'package:notes_app/globals.dart';
 
 class NoteCtrl {
   static final db = Localstore.instance.collection("notes");
+  static final userDB = Localstore.instance.collection("user");
+
+  static newUser() async {
+    var isNewUser = await userDB.get();
+    if (isNewUser == null) {
+      final id = userDB.doc().id;
+      userDB.doc(id).set({'user': true});
+    }
+    user = isNewUser;
+    print(isNewUser);
+  }
 
   static saveNote(var note) async {
     // gets new id
