@@ -16,6 +16,8 @@ class _AddNoteDialogState extends State<AddNoteDialog>
   late AnimationController animationController;
   TextEditingController titleCtrl = new TextEditingController();
   TextEditingController textCtrl = new TextEditingController();
+
+  TextStyle _textStyle = TextStyle(color: Colors.white);
   @override
   void initState() {
     animationController = new AnimationController(
@@ -39,16 +41,20 @@ class _AddNoteDialogState extends State<AddNoteDialog>
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: SimpleDialog(
-          title: Text("Add Note"),
+          title: Text(
+            "Add Note",
+            style: _textStyle,
+          ),
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.white, width: 5),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: TextFormField(
+                    style: _textStyle,
                     controller: titleCtrl,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
@@ -66,10 +72,11 @@ class _AddNoteDialogState extends State<AddNoteDialog>
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(),
+                  border: Border.all(color: Colors.white, width: 5),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextFormField(
+                  style: _textStyle,
                   controller: textCtrl,
                   maxLines: 20,
                   decoration: InputDecoration(
@@ -91,13 +98,19 @@ class _AddNoteDialogState extends State<AddNoteDialog>
                   "Date": DateTime.now().toString(),
                   "Title": titleCtrl.text,
                 });
-               
+
                 Navigator.pushAndRemoveUntil(context,
                     MaterialPageRoute(builder: (builder) {
                   return MainScreen();
                 }), (route) => false);
               },
-              child: Text("Save"),
+              child: Text(
+                "Save",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
             )
           ],
         ),

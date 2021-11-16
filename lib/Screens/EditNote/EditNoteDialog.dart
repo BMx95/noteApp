@@ -23,6 +23,8 @@ class _EditNoteDialogState extends State<EditNoteDialog>
   late AnimationController animationController;
   late TextEditingController titleCtrl = new TextEditingController();
   late TextEditingController textCtrl = new TextEditingController();
+
+  TextStyle _textStyle = TextStyle(color: Colors.white);
   @override
   void initState() {
     titleCtrl.text = title;
@@ -50,7 +52,10 @@ class _EditNoteDialogState extends State<EditNoteDialog>
         child: SimpleDialog(
           title: Row(
             children: [
-              Text("Edit Note"),
+              Text(
+                "Edit Note",
+                style: _textStyle,
+              ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .35,
               ),
@@ -60,9 +65,14 @@ class _EditNoteDialogState extends State<EditNoteDialog>
                         context: context,
                         builder: (builder) {
                           return AlertDialog(
-                            title: Text("Alert!"),
+                            title: Text(
+                              "Alert!",
+                              style: _textStyle,
+                            ),
                             content: Text(
-                                "Are you sure you want to delete this note?"),
+                              "Are you sure you want to delete this note?",
+                              style: _textStyle,
+                            ),
                             actions: [
                               TextButton(
                                   onPressed: () async {
@@ -73,17 +83,26 @@ class _EditNoteDialogState extends State<EditNoteDialog>
                                       return MainScreen();
                                     }), (route) => false);
                                   },
-                                  child: Text("Yes")),
+                                  child: Text(
+                                    "Yes",
+                                    style: _textStyle,
+                                  )),
                               TextButton(
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
-                                  child: Text("No"))
+                                  child: Text(
+                                    "No",
+                                    style: _textStyle,
+                                  ))
                             ],
                           );
                         });
                   },
-                  icon: Icon(Icons.delete))
+                  icon: Icon(
+                    Icons.delete,
+                    color: Colors.white,
+                  ))
             ],
           ),
           children: [
@@ -91,10 +110,11 @@ class _EditNoteDialogState extends State<EditNoteDialog>
               padding: const EdgeInsets.all(8.0),
               child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(),
+                    border: Border.all(color: Colors.white, width: 5),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextFormField(
+                    style: _textStyle,
                     controller: titleCtrl,
                     cursorColor: Colors.black,
                     decoration: InputDecoration(
@@ -112,10 +132,11 @@ class _EditNoteDialogState extends State<EditNoteDialog>
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  border: Border.all(),
+                  border: Border.all(color: Colors.white, width: 5),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextFormField(
+                  style: _textStyle,
                   controller: textCtrl,
                   maxLines: 20,
                   decoration: InputDecoration(
@@ -144,7 +165,13 @@ class _EditNoteDialogState extends State<EditNoteDialog>
                   return MainScreen();
                 }), (route) => false);
               },
-              child: Text("Save"),
+              child: Text(
+                "Save",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
             )
           ],
         ),
